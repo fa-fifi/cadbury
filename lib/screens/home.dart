@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           const Divider(),
           FutureBuilder(
             future: ChocolateRepository.getDataByChocolateType(
-                type: Chocolate.caramel),
+                type: Chocolate.chomp),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Column(

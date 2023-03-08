@@ -6,9 +6,6 @@ enum Month {
   may,
   jun,
   jul;
-
-  @override
-  String toString() => name[0].toUpperCase() + name.substring(1);
 }
 
 enum Chocolate {
@@ -21,7 +18,4 @@ enum Chocolate {
   caramel,
   picnic,
   chomp;
-
-  @override
-  String toString() => name[0].toUpperCase() + name.substring(1);
 }
