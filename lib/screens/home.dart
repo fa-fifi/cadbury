@@ -1,4 +1,5 @@
 import 'package:cadbury/repositories/chocolate.dart';
+import 'package:cadbury/utils/enums.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -17,24 +18,44 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView(
-        children: <Widget>[
+      body: Column(
+        children: [
           FutureBuilder(
-            future: ChocolateRepository.getAllData(),
+            future: ChocolateRepository.getDataBySpecificDate(month: Month.jun),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data!
-                    .map((e) =>
-                        e.chocolateType +
+                return Column(
+                  children: [
+                    ...snapshot.data!.map((e) => Text(e.chocolateType +
                         e.productionDate +
-                        e.volume.toString())
-                    .toString());
+                        e.volume.toString())),
+                  ],
+                );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
               return const CircularProgressIndicator();
             },
-          )
+          ),
+          const Divider(),
+          FutureBuilder(
+            future: ChocolateRepository.getDataByChocolateType(
+                type: Chocolate.caramel),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Column(
+                  children: [
+                    ...snapshot.data!.map((e) => Text(e.chocolateType +
+                        e.productionDate +
+                        e.volume.toString())),
+                  ],
+                );
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+              return const CircularProgressIndicator();
+            },
+          ),
         ],
       ),
     );
