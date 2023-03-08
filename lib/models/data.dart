@@ -1,3 +1,6 @@
+import 'package:cadbury/utils/enums.dart';
+import 'package:cadbury/utils/extensions.dart';
+
 class DataModel {
   final String chocolateType;
   final String productionDate;
@@ -14,4 +17,9 @@ class DataModel {
         productionDate: json['Production_date'],
         volume: json['Volume'],
       );
+
+  int get productionMonth => Month.values
+      .singleWhere(
+          (month) => month.name.capitalize() == productionDate.split('-').last)
+      .index;
 }

@@ -41,6 +41,9 @@ class ChocolateRepository {
           .map<DataModel>((data) => DataModel.fromJson(data))
           .toList();
 
+      unsortedData
+          .sort((a, b) => a.productionMonth.compareTo(b.productionMonth));
+
       return unsortedData;
     } else {
       throw Exception('Failed to load data');
