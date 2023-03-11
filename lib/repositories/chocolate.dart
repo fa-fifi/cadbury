@@ -17,15 +17,15 @@ class ChocolateRepository {
     if (response.statusCode == 200) {
       Map dataList = jsonDecode(response.body) as Map;
 
-      List<DataModel> unsortedData = dataList.values
+      List<DataModel> result = dataList.values
           .map<DataModel>((data) => DataModel.fromJson(data))
           .toList();
 
-      unsortedData.sort((b, a) => a.volume.compareTo(b.volume));
+      result.sort((b, a) => a.volume.compareTo(b.volume));
 
-      return unsortedData.sublist(0, 5);
+      return result.sublist(0, 5);
     } else {
-      throw Exception('Failed to load data');
+      throw Exception('Failed to load data.');
     }
   }
 
@@ -37,16 +37,15 @@ class ChocolateRepository {
     if (response.statusCode == 200) {
       Map dataList = jsonDecode(response.body) as Map;
 
-      List<DataModel> unsortedData = dataList.values
+      List<DataModel> result = dataList.values
           .map<DataModel>((data) => DataModel.fromJson(data))
           .toList();
 
-      unsortedData
-          .sort((a, b) => a.productionMonth.compareTo(b.productionMonth));
+      result.sort((a, b) => a.productionMonth.compareTo(b.productionMonth));
 
-      return unsortedData;
+      return result;
     } else {
-      throw Exception('Failed to load data');
+      throw Exception('Failed to load data.');
     }
   }
 }

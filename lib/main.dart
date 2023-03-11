@@ -1,4 +1,5 @@
 import 'package:cadbury/screens/home.dart';
+import 'package:cadbury/utils/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,9 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'Top 5 Cadbury Chocolate Bars Production',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const HomeScreen(title: 'Flutter Demo Home Page'),
+        theme: AppTheme.primary,
+        home: const HomeScreen(),
       );
 }
