@@ -70,6 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: BarChart(BarChartData(
                       minY: 0,
                       maxY: 5000,
+                      barTouchData: BarTouchData(
+                          touchTooltipData: BarTouchTooltipData(
+                              tooltipBgColor: Colors.black12)),
                       titlesData: FlTitlesData(
                         topTitles: AxisTitles(
                             sideTitles: SideTitles(
@@ -145,6 +148,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       maxX: snapshot.data!.length.toDouble() - 1,
                       minY: 0,
                       maxY: 5000,
+                      lineTouchData: LineTouchData(
+                          touchTooltipData: LineTouchTooltipData(
+                              tooltipBgColor: Colors.black12)),
                       titlesData: FlTitlesData(
                         topTitles: AxisTitles(
                             sideTitles: SideTitles(
